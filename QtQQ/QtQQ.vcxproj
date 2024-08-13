@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C9B98253-82C9-4EBC-A52C-58A70D7EDF25}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="QtSettings">
+    <QtInstall>MSVC2019</QtInstall>
+    <QtModules>core;gui;network;sql;webchannel;webengine;webenginewidgets;widgets;xml</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
+    <QtInstall>MSVC2019</QtInstall>
+    <QtModules>core;gui;network;sql;webchannel;webengine;webenginewidgets;widgets;xml</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="QtConfiguration.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <OutDir>$(SolutionDir)../bin/$(Platform)/$(Configuration)</OutDir>
+    <IntDir>$(SolutionDir)../temp/$(Platform)/$(Configuration)/$(ProjectName)</IntDir>
+    <IncludePath>$(ELSE_PATH);D:\Qt\5.15.2\msvc2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Qt\5.15.2\msvc2019\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <OutDir>$(SolutionDir)../bin/$(Platform)/$(Configuration)</OutDir>
+    <IntDir>$(SolutionDir)../temp/$(Platform)/$(Configuration)/$(ProjectName)</IntDir>
+    <IncludePath>D:\Qt|5.15.2\msvc2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Qt\5.15.2\msvc2019\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="basicwindow.cpp" />
+    <ClCompile Include="CommonUtils.cpp" />
+    <ClCompile Include="ContactItem.cpp" />
+    <ClCompile Include="CustomMenu.cpp" />
+    <ClCompile Include="EmotionLabelItem.cpp" />
+    <ClCompile Include="EmotionWindow.cpp" />
+    <ClCompile Include="MsgWebView.cpp" />
+    <ClCompile Include="NotifyManager.cpp" />
+    <ClCompile Include="QClickLabel.cpp" />
+    <ClCompile Include="QMsgTextEdit.cpp" />
+    <ClCompile Include="ReceiveFile.cpp" />
+    <ClCompile Include="RootContactItem.cpp" />
+    <ClCompile Include="SendFile.cpp" />
+    <ClCompile Include="SkinWindow.cpp" />
+    <ClCompile Include="SysTray.cpp" />
+    <ClCompile Include="TalkWindow.cpp" />
+    <ClCompile Include="TalkWindowItem.cpp" />
+    <ClCompile Include="TalkWindowShell.cpp" />
+    <ClCompile Include="titlebar.cpp" />
+    <ClCompile Include="UserLogin.cpp" />
+    <ClCompile Include="WindowManager.cpp" />
+    <QtRcc Include="CCMainWindow.qrc" />
+    <QtUic Include="CCMainWindow.ui" />
+    <QtMoc Include="CCMainWindow.h" />
+    <ClCompile Include="CCMainWindow.cpp" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="ContactItem.ui" />
+    <QtUic Include="EmotionWindow.ui" />
+    <QtUic Include="ReceiveFile.ui" />
+    <QtUic Include="SendFile.ui" />
+    <QtUic Include="SkinWindow.ui" />
+    <QtUic Include="TalkWindow.ui" />
+    <QtUic Include="TalkWindowItem.ui" />
+    <QtUic Include="TalkWindowShell.ui" />
+    <QtUic Include="UserLogin.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="titlebar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="basicwindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="NotifyManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommonUtils.h" />
+    <QtMoc Include="SendFile.h" />
+    <QtMoc Include="QMsgTextEdit.h" />
+    <QtMoc Include="MsgWebView.h" />
+    <QtMoc Include="ReceiveFile.h" />
+    <ClInclude Include="resource.h" />
+    <QtMoc Include="WindowManager.h" />
+    <QtMoc Include="TalkWindow.h" />
+    <QtMoc Include="TalkWindowItem.h" />
+    <QtMoc Include="EmotionLabelItem.h" />
+    <QtMoc Include="EmotionWindow.h" />
+    <QtMoc Include="TalkWindowShell.h" />
+    <QtMoc Include="ContactItem.h" />
+    <QtMoc Include="RootContactItem.h" />
+    <QtMoc Include="CustomMenu.h" />
+    <QtMoc Include="SysTray.h" />
+    <QtMoc Include="QClickLabel.h" />
+    <QtMoc Include="SkinWindow.h" />
+    <QtMoc Include="UserLogin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertySheet.props" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
